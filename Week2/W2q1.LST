@@ -1,0 +1,40 @@
+A51 MACRO ASSEMBLER  W2Q1                                                                 02/20/2023 16:42:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN W2q1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE W2q1.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h;
+                       2             
+0000 7920              3             mov r1, #20h;
+0002 7A05              4             mov r2, #5h;
+0004 E4                5             clr a;
+0005                   6             BACK:
+                       7                     
+0005 27                8                     add a, @r1;
+0006 09                9                     inc r1;
+0007 5000             10                     jnc down;
+0009                  11             DOWN:
+0009 DAFA             12                     djnz r2,back;
+000B F526             13                     mov 26h, a;
+000D 8925             14                     mov 25h, r1;
+                      15     END
+A51 MACRO ASSEMBLER  W2Q1                                                                 02/20/2023 16:42:27 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0005H   A   
+DOWN . . . . . . .  C ADDR   0009H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

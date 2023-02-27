@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  Q1                                                                   02/21/2023 11:19:24 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN q1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE q1.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 7A05              2     MOV R2,#05H
+0002 7820              3     MOV R0,#20H
+0004 7400              4     MOV A,#00H
+0006 26                5     BACK: ADD A,@R0
+0007 5001              6     JNC SKIP
+0009 09                7     INC R1
+000A 08                8     SKIP: INC R0
+000B DAF9              9     DJNZ R2,BACK
+000D 8925             10     MOV 25H,R1
+000F F526             11     MOV 26H,A
+                      12     END 
+                                     
+A51 MACRO ASSEMBLER  Q1                                                                   02/21/2023 11:19:24 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0006H   A   
+SKIP . . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
