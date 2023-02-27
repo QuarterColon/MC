@@ -1,0 +1,47 @@
+A51 MACRO ASSEMBLER  NBGS                                                                 02/27/2023 15:06:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN nbgs.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE nbgs.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 7A05              2     mov r2,#05h
+0002 784A              3     mov r0,#4ah
+0004 758144            4     mov sp,#44h
+0007 D060              5     back:pop 60h
+0009 E560              6     mov a,60h
+000B 540F              7     anl a,#0fh
+000D 700D              8     jnz here
+000F E560              9     mov a,60h
+0011 C4               10     swap a
+0012 5401             11     anl a,#01h
+0014 B40105           12     cjne a,#01h,here
+0017 A660             13     mov@r0,60h
+0019 08               14     inc r0
+001A 8003             15     sjmp loop
+001C A760             16     here:mov@r1,60h
+001E 09               17     inc r1
+001F DAE6             18     loop:djnz r2,back
+                      19     end
+                             
+A51 MACRO ASSEMBLER  NBGS                                                                 02/27/2023 15:06:34 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0007H   A   
+HERE . . . . . . .  C ADDR   001CH   A   
+LOOP . . . . . . .  C ADDR   001FH   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

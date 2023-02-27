@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  W2Q3                                                                 02/27/2023 15:40:13 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN W2Q3.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE W2Q3.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 000h;
+0000 7A05              2             mov r2, #05h;
+0002 7940              3             mov r1, #40h;
+0004 784A              4             mov r0, #4ah;
+0006 750845            5             mov 08h, #45h;
+0009 E4                6             clr a;
+000A                   7             repeat:
+000A E7                8                     mov a, @r1;
+000B 540F              9                     anl a,#0fh;
+000D FB               10                     mov r3, a;
+000E E7               11                     mov a,@r1;
+000F BB080D           12                     cjne r3, #08h, next;
+0012 D2D3             13                     setb psw.3;
+0014 F6               14                     mov @r0, a;
+0015 C2D3             15                     clr psw.3;
+0017 0508             16                     inc 08h;
+0019 09               17                     inc r1;
+001A DAEE             18                     djnz r2, repeat;
+001C EA               19                     mov a, r2;
+001D 6005             20                     jz last;
+001F                  21                     next:
+001F F6               22                             mov @r0, a;
+0020 08               23                             inc r0;
+0021 09               24                             inc r1;
+0022 DAE6             25                             djnz r2, repeat;
+0024 00               26                             last : NOP;
+                      27     end
+A51 MACRO ASSEMBLER  W2Q3                                                                 02/27/2023 15:40:13 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LAST . . . . . . .  C ADDR   0024H   A   
+NEXT . . . . . . .  C ADDR   001FH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+REPEAT . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

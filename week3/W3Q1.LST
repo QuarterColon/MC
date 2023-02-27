@@ -1,0 +1,47 @@
+A51 MACRO ASSEMBLER  W3Q1                                                                 02/27/2023 16:27:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN W3Q1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE W3Q1.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h;
+                       2     
+  000B                 3     n equ 11;
+0000 7A0B              4     mov r2, #n;
+0002 7830              5     mov r0, #30h;
+                       6     
+0004                   7     repeat:
+0004 26                8             add a, @r0;
+0005 D4                9             da a;
+0006 5007             10             jnc next;
+0008 C550             11             xch a, 50h;
+000A 2401             12             add a, #01h;
+000C D4               13             da a;
+000D C550             14             xch a,50h;
+000F                  15     next:
+000F 08               16             inc r0;
+0010 DAF2             17             djnz r2, repeat;
+                      18             
+0012 F551             19             mov 51h, a;
+                      20     
+                      21     end
+A51 MACRO ASSEMBLER  W3Q1                                                                 02/27/2023 16:27:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+N. . . . . . . . .  N NUMB   000BH   A   
+NEXT . . . . . . .  C ADDR   000FH   A   
+REPEAT . . . . . .  C ADDR   0004H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

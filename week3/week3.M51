@@ -1,0 +1,54 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/27/2023  16:27:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE W3Q1.obj TO week3 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  W3Q1.obj (W3Q1)
+
+
+LINK MAP OF MODULE:  week3 (W3Q1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0014H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  week3 (W3Q1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        W3Q1
+  N:000BH         SYMBOL        N
+  C:000FH         SYMBOL        NEXT
+  C:0004H         SYMBOL        REPEAT
+  C:0000H         LINE#         4
+  C:0002H         LINE#         5
+  C:0004H         LINE#         8
+  C:0005H         LINE#         9
+  C:0006H         LINE#         10
+  C:0008H         LINE#         11
+  C:000AH         LINE#         12
+  C:000CH         LINE#         13
+  C:000DH         LINE#         14
+  C:000FH         LINE#         16
+  C:0010H         LINE#         17
+  C:0012H         LINE#         19
+  -------         ENDMOD        W3Q1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0014H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=20
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
