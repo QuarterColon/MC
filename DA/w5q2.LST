@@ -1,0 +1,73 @@
+A51 MACRO ASSEMBLER  W5Q2                                                                 03/27/2023 16:42:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w5q2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w5q2.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 020016            2             ljmp main
+0003                   3             org 0003h
+0003 020022            4                     ljmp wave0
+0013                   5                     org 0013h
+0013 020022            6                             ljmp wave0
+0016                   7                             main:
+0016 75A885            8                             mov ie, #10000101b
+0019 C288              9                             clr tcon.0
+001B C28A             10                             clr tcon.2
+001D 758901           11                             mov tmod, #01h
+0020 80FE             12                             standby: sjmp standby
+                      13                             
+0022                  14                             wave0:
+0022 7A07             15                             mov r2, #07h
+0024 D293             16                             setb p1.3
+0026 1130             17                             acall delay 
+0028 7A07             18                             mov r2, #07h
+002A C293             19                             clr p1.3
+002C 1130             20                             acall delay 
+002E 80F2             21                             sjmp wave0
+                      22                             
+0030                  23                             delay:
+0030 758CFF           24                             mov th0, #0ffh
+0033 758AE1           25                             mov tl0, #0e1h
+0036 D28C             26                             setb tr0
+0038 308DFD           27                             wait: jnb tf0, wait
+003B C28C             28                             clr tr0
+003D C28D             29                             clr tf0
+003F DAEF             30                             djnz r2, delay
+0041 22               31                             ret
+                      32                             
+                      33                             
+                      34     
+                      35     end
+                                     
+                                                     
+A51 MACRO ASSEMBLER  W5Q2                                                                 03/27/2023 16:42:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0030H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+MAIN . . . . . . .  C ADDR   0016H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+STANDBY. . . . . .  C ADDR   0020H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+WAIT . . . . . . .  C ADDR   0038H   A   
+WAVE0. . . . . . .  C ADDR   0022H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

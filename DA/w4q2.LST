@@ -1,0 +1,63 @@
+A51 MACRO ASSEMBLER  W4Q2                                                                 03/20/2023 16:55:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w4q2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w4q2.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000                   2             restart:
+0000 791F              3             mov r1, #1fh
+0002 7400              4             mov a, #00h
+0004                   5             loop:
+0004 B100              6                     acall delay
+0006 C3                7                     clr c
+0007 8990              8                     mov p1, r1
+0009 F5A0              9                     mov p2, a
+000B 2401             10                     add a, #01h
+000D 5001             11                     jnc skip
+000F 09               12                     inc r1
+0010 B920F1           13                     skip: cjne r1, #20h, loop
+0013 8990             14                     mov p1, r1
+0015 7A20             15                     mov r2, #20h
+0017 05A0             16                     loop1: inc p2
+0019 B100             17                     acall delay 
+001B DAFA             18                     djnz r2, loop1
+001D 80E1             19                     sjmp restart
+                      20                     
+0500                  21                     org 0500h
+0500                  22                             delay:
+0500 7B14             23                             mov r3, #20
+0502 7C32             24                             l3: mov r4, #50
+0504 7DFF             25                             l2: mov r5, #0ffh
+0506 DDFE             26                             l1: djnz r5, l1
+0508 DCFA             27                             djnz r4, l2
+050A DBF6             28                             djnz r3, l3
+050C 22               29                             ret
+                      30                             end
+A51 MACRO ASSEMBLER  W4Q2                                                                 03/20/2023 16:55:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0500H   A   
+L1 . . . . . . . .  C ADDR   0506H   A   
+L2 . . . . . . . .  C ADDR   0504H   A   
+L3 . . . . . . . .  C ADDR   0502H   A   
+LOOP . . . . . . .  C ADDR   0004H   A   
+LOOP1. . . . . . .  C ADDR   0017H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RESTART. . . . . .  C ADDR   0000H   A   
+SKIP . . . . . . .  C ADDR   0010H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

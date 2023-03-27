@@ -1,0 +1,56 @@
+A51 MACRO ASSEMBLER  W4Q3                                                                 03/20/2023 17:08:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w4q3.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w4q3.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 E570              2     mov a, 70h
+0002                   3     repeat:
+0002 75F00A            4     mov b, #0ah
+0005 84                5     div ab
+0006 C0F0              6     push b
+0008 70F8              7     jnz repeat
+000A 7A03              8     mov r2, #03h
+000C B100              9     l:acall delay
+000E C080             10     push p0
+0010 DAFA             11     djnz r2,l
+0012 A10D             12     ajmp skip
+                      13     
+0500                  14     org 0500h
+0500                  15             delay:
+0500 7B01             16             mov r3, #01
+0502 7C01             17             l3: mov r4, #01
+0504 7D01             18             l2: mov r5, #01h
+0506 DDFE             19             l1: djnz r5, l1
+0508 DCFA             20             djnz r4, l2
+050A DBF6             21             djnz r3, l3
+050C 22               22             ret
+050D                  23             skip:
+                      24             end
+A51 MACRO ASSEMBLER  W4Q3                                                                 03/20/2023 17:08:47 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   0500H   A   
+L. . . . . . . . .  C ADDR   000CH   A   
+L1 . . . . . . . .  C ADDR   0506H   A   
+L2 . . . . . . . .  C ADDR   0504H   A   
+L3 . . . . . . . .  C ADDR   0502H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+REPEAT . . . . . .  C ADDR   0002H   A   
+SKIP . . . . . . .  C ADDR   050DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

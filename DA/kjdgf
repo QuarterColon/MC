@@ -1,0 +1,39 @@
+org 0000h
+							ljmp main
+
+
+							org 0003h
+						    ljmp isr0
+
+
+							org 0013h
+							ljmp isr1
+
+
+							org 0030h
+				main:       mov ie,#85h
+							setb p3.2
+							setb p3.3
+				here:       sjmp here
+
+
+				isr0:       setb p1.5
+				            mov r1,#69h
+				again:		djnz r1,again
+				            
+							clr p1.5
+							mov r2,#0c8h
+				l2:			djnz r2,l2
+							sjmp isr0
+
+				isr1:       setb p1.5
+				            mov r5,#3
+				l1:			mov r4,#0ffh					                                                                                                           
+				loop1:		djnz r4,loop1
+				           	djnz r5,l1
+							clr p1.5
+							mov r7,#0e5h
+				loop2:		djnz r7,loop2
+				             sjmp isr1
+
+							 end

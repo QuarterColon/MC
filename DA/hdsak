@@ -1,0 +1,8 @@
+wave1:
+			mov r2, #35h
+			setb p1.3
+			acall delay
+			mov r2, #15h
+			clr p1.3
+			acall delay
+			sjmp wave1
