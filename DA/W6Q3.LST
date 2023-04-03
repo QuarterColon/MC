@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  W6Q3                                                                 04/03/2023 14:32:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN W6Q3.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE W6Q3.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020300            2             LJMP START 
+0300                   3             ORG 0300H
+0300 7110              4             START: ACALL DELAY
+0302 758066            5             MOV P0,#66H
+0305 7110              6             ACALL DELAY
+0307 7110              7             ACALL DELAY
+0309 758000            8             MOV P0,#0
+030C 7110              9             ACALL DELAY
+030E 80F0             10             SJMP START
+0310 7CFF             11             DELAY: MOV R4,#0FFH
+0312 DCFE             12             LOOP:DJNZ R4,LOOP
+0314 22               13             RET
+                      14     END
+                             
+                                     
+A51 MACRO ASSEMBLER  W6Q3                                                                 04/03/2023 14:32:44 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0310H   A   
+LOOP . . . . . . .  C ADDR   0312H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+START. . . . . . .  C ADDR   0300H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

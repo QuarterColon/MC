@@ -1,0 +1,36 @@
+A51 MACRO ASSEMBLER  W6Q1                                                                 04/03/2023 14:29:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w6q1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w6q1.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000                   2             start:
+0000 E4                3                     clr a
+0001 F590              4                     back: mov p1,a
+0003 04                5                     inc a
+0004 B4B3FA            6                     cjne a,#0b3h,back
+0007 80F7              7                     sjmp start
+                       8                     end
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  W6Q1                                                                 04/03/2023 14:29:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0001H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

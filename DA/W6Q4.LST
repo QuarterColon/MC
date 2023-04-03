@@ -1,0 +1,110 @@
+A51 MACRO ASSEMBLER  W6Q4                                                                 04/03/2023 15:08:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN W6Q4.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE W6Q4.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 7438              2             MOV A, #38H
+0002 113E              3             ACALL CMD
+0004 7406              4             MOV A, #06H
+0006 113E              5             ACALL CMD
+0008 7484              6             MOV A, #84H
+000A 113E              7             ACALL CMD
+000C 90002A            8             MOV DPTR, #TEXT1
+000F                   9             REPEAT:
+000F E4               10                     CLR A
+0010 93               11                     MOVC A, @A+DPTR
+0011 6005             12                     JZ LAST
+0013 114C             13                     ACALL DATA1
+0015 A3               14                     INC DPTR
+0016 80F7             15                     SJMP REPEAT 
+                      16                     
+0018                  17             LAST:
+0018 74C8             18                     MOV A, #0C8H
+001A 113E             19                     ACALL CMD
+001C 900039           20                     MOV DPTR, #TEXT2
+                      21                     
+001F                  22             REPEAT2:
+001F E4               23                     CLR A
+0020 93               24                     MOVC A, @A+DPTR
+0021 6046             25                     JZ LAST2
+0023 114C             26                     ACALL DATA1
+0025 A3               27                     INC DPTR
+0026 80F7             28                     SJMP REPEAT2
+0028 80FE             29                     SKIP1: SJMP SKIP1
+002A 4D494352         30                     TEXT1 :DB 'MICROCONTROLLER'
+002E 4F434F4E                
+0032 54524F4C                
+0036 4C4552                  
+0039 38303531         31                     TEXT2: DB '8051', 0
+003D 00                      
+                      32                             
+003E                  33             CMD:
+003E 115A             34                     ACALL READY
+0040 C2B7             35                     CLR P3.7
+0042 C2B6             36                     CLR P3.6
+0044 F5A0             37                     MOV P2, A
+0046 D2B5             38                     SETB P3.5
+0048 00               39                     NOP
+0049 C2B5             40                     CLR P3.5
+004B 22               41                     RET
+                      42                     
+004C                  43             DATA1:
+004C 115A             44                     ACALL READY
+004E D2B7             45                     SETB P3.7
+0050 C2B6             46                     CLR P3.6
+0052 F590             47                     MOV P1,A
+0054 D2B5             48                     SETB P3.5
+0056 00               49                     NOP
+0057 C2B5             50                     CLR P3.5
+0059 22               51                     RET
+                      52             
+005A                  53             READY:
+005A D2A7             54                     SETB P2.7
+A51 MACRO ASSEMBLER  W6Q4                                                                 04/03/2023 15:08:14 PAGE     2
+
+005C C2B7             55                     CLR P3.7
+005E D2B6             56                     SETB P3.6
+0060                  57                     WAIT:
+0060 C2B5             58                             CLR P3.5
+0062 00               59                             NOP
+0063 D2B5             60                             SETB P3.5
+0065 2097F8           61                             JB P1.7, WAIT
+0068 22               62                             RET
+0069                  63                             LAST2:
+0069 00               64                                     NOP
+                      65                                     
+                      66     END
+                                                     
+A51 MACRO ASSEMBLER  W6Q4                                                                 04/03/2023 15:08:14 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CMD. . . . . . . .  C ADDR   003EH   A   
+DATA1. . . . . . .  C ADDR   004CH   A   
+LAST . . . . . . .  C ADDR   0018H   A   
+LAST2. . . . . . .  C ADDR   0069H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+READY. . . . . . .  C ADDR   005AH   A   
+REPEAT . . . . . .  C ADDR   000FH   A   
+REPEAT2. . . . . .  C ADDR   001FH   A   
+SKIP1. . . . . . .  C ADDR   0028H   A   
+TEXT1. . . . . . .  C ADDR   002AH   A   
+TEXT2. . . . . . .  C ADDR   0039H   A   
+WAIT . . . . . . .  C ADDR   0060H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
