@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  W6Q2                                                                 04/03/2023 14:30:54 PAGE     1
+A51 MACRO ASSEMBLER  W6Q2                                                                 04/03/2023 15:48:53 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02
@@ -8,8 +8,8 @@ ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w6q2.a51 SET(SMALL) DEBUG EP
 LOC  OBJ            LINE     SOURCE
 
 0000                   1     org 000h
-0000 7A0E              2             start : mov r2,#0eh
-0002 900300            3     mov dptr , #sinetable
+0000 7A18              2             start : mov r2,#24
+0002 900050            3     mov dptr , #sinetable
 0005 E4                4     repeat:clr a
 0006 93                5     movc a,@a+dptr
 0007 F590              6     mov p1,a
@@ -17,12 +17,18 @@ LOC  OBJ            LINE     SOURCE
 000A DAF9              8     djnz r2,repeat
 000C 80F2              9     sjmp start
                       10     
-0300                  11     ORG 0300H 
-0300 80BF0BFF         12             SINETABLE : DB 80H,0BFH,0BH,0FFH,0BFH,80H,40H,11H,0DDH,11H,40H,80H
-0304 BF804011                
-0308 DD114080                
-                      13     END
-A51 MACRO ASSEMBLER  W6Q2                                                                 04/03/2023 14:30:54 PAGE     2
+0050                  11     ORG 0050H 
+0050 7FA0BFD9         12             SINETABLE : DB 127,160, 191, 217, 237, 250, 255, 250, 237, 217, 191, 160, 127, 94, 
+                             63, 37, 17, 4, 0, 4, 17, 37, 63, 94, 127
+0054 EDFAFFFA                
+0058 EDD9BFA0                
+005C 7F5E3F25                
+0060 11040004                
+0064 11253F5E                
+0068 7F                      
+                      13                     
+                      14     END
+A51 MACRO ASSEMBLER  W6Q2                                                                 04/03/2023 15:48:53 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -32,7 +38,7 @@ N A M E             T Y P E  V A L U E   ATTRIBUTES
 
 P1 . . . . . . . .  D ADDR   0090H   A   
 REPEAT . . . . . .  C ADDR   0005H   A   
-SINETABLE. . . . .  C ADDR   0300H   A   
+SINETABLE. . . . .  C ADDR   0050H   A   
 START. . . . . . .  C ADDR   0000H   A   
 
 

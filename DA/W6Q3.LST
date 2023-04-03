@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  W6Q3                                                                 04/03/2023 14:32:44 PAGE     1
+A51 MACRO ASSEMBLER  W6Q3                                                                 04/03/2023 16:12:04 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02
@@ -10,20 +10,24 @@ LOC  OBJ            LINE     SOURCE
 0000                   1     ORG 0000H
 0000 020300            2             LJMP START 
 0300                   3             ORG 0300H
-0300 7110              4             START: ACALL DELAY
+0300 711A              4             START: ACALL DELAY
 0302 758066            5             MOV P0,#66H
-0305 7110              6             ACALL DELAY
-0307 7110              7             ACALL DELAY
-0309 758000            8             MOV P0,#0
-030C 7110              9             ACALL DELAY
-030E 80F0             10             SJMP START
-0310 7CFF             11             DELAY: MOV R4,#0FFH
-0312 DCFE             12             LOOP:DJNZ R4,LOOP
-0314 22               13             RET
-                      14     END
+0305 711A              6             ACALL DELAY
+0307 7580B3            7             MOV P0,#0B3H
+030A 711A              8             ACALL DELAY
+030C 711A              9             ACALL DELAY
+030E 7580FF           10             MOV P0,#0FFH
+0311 711A             11             ACALL DELAY
+0313 758000           12             MOV P0, #0
+0316 711A             13             ACALL DELAY
+0318 80E6             14             SJMP START
+031A 7CFF             15             DELAY: MOV R4,#0FFH
+031C DCFE             16             LOOP:DJNZ R4,LOOP
+031E 22               17             RET
+                      18     END
                              
                                      
-A51 MACRO ASSEMBLER  W6Q3                                                                 04/03/2023 14:32:44 PAGE     2
+A51 MACRO ASSEMBLER  W6Q3                                                                 04/03/2023 16:12:04 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -31,8 +35,8 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
-DELAY. . . . . . .  C ADDR   0310H   A   
-LOOP . . . . . . .  C ADDR   0312H   A   
+DELAY. . . . . . .  C ADDR   031AH   A   
+LOOP . . . . . . .  C ADDR   031CH   A   
 P0 . . . . . . . .  D ADDR   0080H   A   
 START. . . . . . .  C ADDR   0300H   A   
 

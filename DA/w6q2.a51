@@ -1,5 +1,5 @@
 org 000h
-	start : mov r2,#0eh
+	start : mov r2,#24
 mov dptr , #sinetable
 repeat:clr a
 movc a,@a+dptr
@@ -8,6 +8,7 @@ inc dptr
 djnz r2,repeat
 sjmp start
 
-ORG 0300H 
-	SINETABLE : DB 80H,0BFH,0BH,0FFH,0BFH,80H,40H,11H,0DDH,11H,40H,80H
+ORG 0050H 
+	SINETABLE : DB 127,160, 191, 217, 237, 250, 255, 250, 237, 217, 191, 160, 127, 94, 63, 37, 17, 4, 0, 4, 17, 37, 63, 94, 127
+		
 END
