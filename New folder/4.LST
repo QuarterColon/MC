@@ -1,0 +1,102 @@
+A51 MACRO ASSEMBLER  4                                                                    04/12/2023 15:35:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 4.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE 4.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 802E              2     sjmp start
+                       3     
+0030                   4     org 0030h
+0030 7438              5     start:mov a,#38h
+0032 115A              6     acall command
+0034 7401              7     mov a,#01h
+0036 115A              8     acall command
+0038 7406              9     mov a,#06h
+003A 115A             10     acall command 
+003C 7481             11     mov a,#81h
+003E 115A             12     acall command
+0040 901000           13     mov dptr,#text1
+0043 E4               14     again:clr a
+0044 93               15     movc a,@a+dptr
+0045 6005             16     jz next
+0047 1168             17     acall data1
+0049 A3               18     inc dptr
+004A 80F7             19     sjmp again
+004C 74C6             20     next: mov a,#0c6h
+004E 115A             21     acall command
+0050 901010           22     mov dptr,#text2
+0053 E4               23     repeat:clr a
+0054 93               24     movc a,@a+dptr
+0055 A3               25     inc dptr
+0056 80FB             26     sjmp repeat
+0058 80FE             27     skip: sjmp skip
+                      28     
+005A 1176             29     command:acall busy
+005C C2B7             30     clr p3.7
+005E C2B6             31     clr p3.6
+0060 F590             32     mov p1,a
+0062 D2B5             33     setb p3.5
+0064 00               34     nop
+0065 C2B5             35     clr p3.5
+0067 22               36     ret
+                      37     
+0068 1176             38     data1: acall busy
+006A D2B7             39     setb p3.7
+006C C2B6             40     clr p3.6
+006E F5A0             41     mov p2,a
+0070 D2B5             42     setb p3.5
+0072 00               43     nop
+0073 C2B5             44     clr p3.5
+0075 22               45     ret
+                      46     
+0076 D2A7             47     busy:setb p2.7
+0078 C2B7             48     clr p3.7
+007A C2A5             49     back:clr p2.5
+007C 00               50     nop
+007D D2A5             51     setb p2.5
+007F 20A7F8           52     jb p2.7,back
+0082 C297             53     clr p1.7
+0084 22               54     ret
+                      55     
+1000                  56     org 1000h
+1000 4D494352         57     text1: db "MICROCONTROLLER",0
+1004 4F434F4E                
+A51 MACRO ASSEMBLER  4                                                                    04/12/2023 15:35:34 PAGE     2
+
+1008 54524F4C                
+100C 4C455200                
+1010 08000501         58     text2: db 8,0,5,1
+                      59             
+                      60     end
+A51 MACRO ASSEMBLER  4                                                                    04/12/2023 15:35:34 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0043H   A   
+BACK . . . . . . .  C ADDR   007AH   A   
+BUSY . . . . . . .  C ADDR   0076H   A   
+COMMAND. . . . . .  C ADDR   005AH   A   
+DATA1. . . . . . .  C ADDR   0068H   A   
+NEXT . . . . . . .  C ADDR   004CH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+REPEAT . . . . . .  C ADDR   0053H   A   
+SKIP . . . . . . .  C ADDR   0058H   A   
+START. . . . . . .  C ADDR   0030H   A   
+TEXT1. . . . . . .  C ADDR   1000H   A   
+TEXT2. . . . . . .  C ADDR   1010H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  W3Q3                                                                 04/17/2023 15:31:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w3q3.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w3q3.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+  0005                 2     n equ 5
+0000 7A05              3     mov r2, #5h
+0002 1A                4     dec r2
+0003 7830              5     mov r0, #30h
+0005 850001            6     j: mov 01h, 00h
+0008 E7                7     i: mov a, @r1
+0009 09                8     inc r1
+000A C3                9     clr c
+000B 97               10     subb a, @r1
+000C 5003             11     jnc skip
+000E C7               12     xch a, @r1
+000F C6               13     xch a, @r0
+0010 C7               14     xch a, @r1
+0011 B935F4           15     skip: cjne r1, #35h, i
+0014 08               16     inc r0
+0015 DAEE             17     djnz r2, j
+0017 00               18     nop 
+                      19     end
+A51 MACRO ASSEMBLER  W3Q3                                                                 04/17/2023 15:31:58 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+I. . . . . . . . .  C ADDR   0008H   A   
+J. . . . . . . . .  C ADDR   0005H   A   
+N. . . . . . . . .  N NUMB   0005H   A   
+SKIP . . . . . . .  C ADDR   0011H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,175 @@
+A51 MACRO ASSEMBLER  WEEK72                                                               04/05/2023 09:43:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE week72.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 75A00F            2             exit:mov p2,#0fh
+0003 759000            3             repeat:mov p1,#00h
+0006 E5A0              4             notreleased:mov a,p2
+0008 540F              5             anl a,#0fh
+000A B40FF9            6             cjne a,#0fh,notreleased
+000D                   7             acall delay
+*** _______________________________________^
+*** ERROR #A45 IN 7 (week72.asm, LINE 7): UNDEFINED SYMBOL (PASS-2)
+000F E5A0              8             again:mov a,p2
+0011 540F              9             anl  a,#0fh
+0013 B40F02           10             cjne a,#0fh,pressed
+0016 80F7             11             sjmp again
+0018                  12             pressed:acall delay
+*** _______________________________________________^
+*** ERROR #A45 IN 12 (week72.asm, LINE 12): UNDEFINED SYMBOL (PASS-2)
+001A E5A0             13             mov a,p2
+001C 540F             14             anl a,#0fh
+001E B40F02           15             cjne a,#0fh,keypressed
+0021 80EC             16             sjmp again
+0023 7590C6           17             keypressed:mov p1,#11111110
+*** ____________________________________________________^
+*** WARNING #A52 IN 17 (week72.asm, LINE 17): VALUE HAS BEEN TRUNCATED TO 8 BITS
+0026 E5A0             18             mov a,p2
+0028 540F             19             anl a,#0fh
+002A B40F1A           20             cjne a,#0fh ,row1
+002D 7590C6           21             mov p1,#11111110
+*** _________________________________________^
+*** WARNING #A52 IN 21 (week72.asm, LINE 21): VALUE HAS BEEN TRUNCATED TO 8 BITS
+0030 E5A0             22             mov a,p2
+0032 540F             23             anl a,#0fh
+0034 B40F10           24             cjne a,#0fh,row1
+0037 7590C6           25             mov p1,#11111110
+*** _________________________________________^
+*** WARNING #A52 IN 25 (week72.asm, LINE 25): VALUE HAS BEEN TRUNCATED TO 8 BITS
+003A E5A0             26             mov a,p2
+003C 540F             27             anl a,#0fh
+003E                  28             cjne a,#11110111
+*** _________________________________^
+*** ERROR #A38 IN 28 (week72.asm, LINE 28): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+003E E5A0             29             mov a,p2
+0040 540F             30             anl a,#0fh
+0042 B40F02           31             cjne a,#0fh,row3
+0045 80C8             32             sjmp again
+0047                  33             row0code:mov dptr,#row0code,sjmp find 
+*** _____________________________________________________________^
+*** __________________________________________________________________^
+*** ERROR #A9 IN 33 (week72.asm, LINE 33): SYNTAX ERROR
+*** ERROR #A9 IN 33 (week72.asm, LINE 33): SYNTAX ERROR
+0047                  34             row2:mov dptr,#row2code,sjmp find
+*** _________________________________________________________^
+*** ______________________________________________________________^
+*** ERROR #A9 IN 34 (week72.asm, LINE 34): SYNTAX ERROR
+*** ERROR #A9 IN 34 (week72.asm, LINE 34): SYNTAX ERROR
+0047                  35             row1:mov dptr,#row1code,sjmp find
+*** _________________________________________________________^
+*** ______________________________________________________________^
+*** ERROR #A9 IN 35 (week72.asm, LINE 35): SYNTAX ERROR
+A51 MACRO ASSEMBLER  WEEK72                                                               04/05/2023 09:43:58 PAGE     2
+
+*** ERROR #A9 IN 35 (week72.asm, LINE 35): SYNTAX ERROR
+0047                  36             row3:mov dptr,#row3code,sjmp find
+*** _________________________________________________________^
+*** ______________________________________________________________^
+*** ERROR #A9 IN 36 (week72.asm, LINE 36): SYNTAX ERROR
+*** ERROR #A9 IN 36 (week72.asm, LINE 36): SYNTAX ERROR
+0047 13               37                     find:rrc a
+0048 5003             38                     jnc read
+004A A3               39                     inc dptr
+004B 80FA             40                     sjmp find
+004D E4               41                     read:clr a
+004E                  42                     movc,a,@a+dptr
+*** _____________________________________________^
+*** ERROR #A15 IN 42 (week72.asm, LINE 42): MISSING FACTOR
+004E 60B0             43                     jz exit
+0050 1174             44                     acall cmd
+0052 A3               45                     inc dptr
+0053 80F8             46                     sjmp read
+0055 30313233         47                     row0code:db '0','1','2','3'
+*** _________________________________________^
+*** ERROR #A8 IN 47 (week72.asm, LINE 47): ATTEMPT TO DEFINE AN ALREADY DEFINED LABEL
+0059 34353637         48                     row1code:db '4','5','6','7'
+005D 38393130         49                     row2code:db '8','9','10','11'
+0061 3131                    
+0063 31323133         50                     row3code:db '12','13','14','15'
+0067 31343135                
+006B                  51                             mov dptr,a
+*** __________________________________________________________^
+*** ERROR #A40 IN 51 (week72.asm, LINE 51): INVALID REGISTER
+006B E4               52                             loop:clr a
+006C 93               53                             movc a,@a+dptr
+006D 6003             54                             jz done
+006F                  55                             acall data
+*** _______________________________________________________^
+*** ERROR #A9 IN 55 (week72.asm, LINE 55): SYNTAX ERROR
+006F A3               56                                     inc dptr
+0070 80F9             57                                     sjmp loop
+0072 80FE             58                                     done:sjmp done
+0074 118C             59                                     cmd:acall busy
+0076 C2A0             60                                     clr p2.0
+0078 C2A1             61                                     clr p2.1
+007A F590             62                                     mov p1,a
+007C D2A2             63                                     setb p2.2
+007E 00               64                                     nop 
+007F C2A2             65                                     clr p2.2
+0081 22               66                                     ret
+                      67                                     data:acall busy
+*** _________________________________________________________^
+*** ERROR #A5 IN 67 (week72.asm, LINE 67): ILLEGAL USE OF A RESERVED WORD
+0082 D2A0             68                                             setb p2.0
+0084 C2A1             69                                             clr p2.1
+0086 F590             70                                             mov p1,a
+0088 00               71                                             nop
+0089 C2A2             72                                             clr p2.2
+008B 22               73                                             ret
+008C D297             74                                     busy:setb p1.7
+008E C2A0             75                                     clr p2.0
+0090 D2A1             76                                     setb p2.1
+0092 C2A2             77                                     clr p2.2
+0094                  78                                     jb p1.7
+*** _________________________________________________________^
+*** ERROR #A38 IN 78 (week72.asm, LINE 78): NUMBER OF OPERANDS DOES NOT MATCH INSTRUCTION
+0094 C2A1             79                                     clr p2.1
+0096 22               80                                     ret
+                      81                             end
+                                     
+A51 MACRO ASSEMBLER  WEEK72                                                               04/05/2023 09:43:58 PAGE     3
+
+                                     
+                                             
+A51 MACRO ASSEMBLER  WEEK72                                                               04/05/2023 09:43:58 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   000FH   A   
+BUSY . . . . . . .  C ADDR   008CH   A   
+CMD. . . . . . . .  C ADDR   0074H   A   
+DELAY. . . . . . .    ----   -----       
+DONE . . . . . . .  C ADDR   0072H   A   
+EXIT . . . . . . .  C ADDR   0000H   A   
+FIND . . . . . . .  C ADDR   0047H   A   
+KEYPRESSED . . . .  C ADDR   0023H   A   
+LOOP . . . . . . .  C ADDR   006BH   A   
+NOTRELEASED. . . .  C ADDR   0006H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PRESSED. . . . . .  C ADDR   0018H   A   
+READ . . . . . . .  C ADDR   004DH   A   
+REPEAT . . . . . .  C ADDR   0003H   A   
+ROW0CODE . . . . .  C ADDR   0047H   A   
+ROW1 . . . . . . .  C ADDR   0047H   A   
+ROW1CODE . . . . .  C ADDR   0059H   A   
+ROW2 . . . . . . .  C ADDR   0047H   A   
+ROW2CODE . . . . .  C ADDR   005DH   A   
+ROW3 . . . . . . .  C ADDR   0047H   A   
+ROW3CODE . . . . .  C ADDR   0063H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  3 WARNING(S), 17 ERROR(S)

@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  2                                                                    04/12/2023 14:58:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE 2.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 7A24              2     start: mov r2,#36
+0002 901000            3     mov dptr,#sine
+0005 E4                4     back: clr a
+0006 93                5     movc a,@a+dptr
+0007 F590              6     mov p1,a
+0009 A3                7     inc dptr
+000A DAF9              8     djnz r2,back
+000C 80F2              9     sjmp start
+                      10     
+1000                  11     org 1000h
+1000 8095A8BF         12     sine: db 128,149,168,191,209,224,240,245,253,255,253,245,240,224,209,191,168,149,128,105,84
+                             ,64,45,30,17,8,2,0,8,8,17,30,45,64,84,105
+1004 D1E0F0F5                
+1008 FDFFFDF5                
+100C F0E0D1BF                
+1010 A8958069                
+1014 54402D1E                
+1018 11080200                
+101C 0808111E                
+1020 2D405469                
+                      13             
+                      14     end
+A51 MACRO ASSEMBLER  2                                                                    04/12/2023 14:58:15 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0005H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SINE . . . . . . .  C ADDR   1000H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

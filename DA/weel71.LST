@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  WEEL71                                                               04/05/2023 09:58:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN weel71.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE weel71.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 D295              2             setb p1.5
+0002 75A0FF            3             mov p2,#0ffh
+0005 759003            4             mov p1,#03h
+0008 D293              5             setb p1.3
+000A D294              6             setb p1.4
+000C 00                7             nop
+000D C294              8             clr p1.4
+000F C293              9             clr p1.3
+0011 2093FD           10             wait1:jb p1.3,wait1
+0014 3095FD           11             wait:jnb p1.5,wait
+0017 D296             12             setb p1.6
+0019 E5A0             13             mov a,p2
+001B F555             14             mov 55h,a
+                      15             end
+A51 MACRO ASSEMBLER  WEEL71                                                               04/05/2023 09:58:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+WAIT . . . . . . .  C ADDR   0014H   A   
+WAIT1. . . . . . .  C ADDR   0011H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

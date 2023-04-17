@@ -1,0 +1,58 @@
+A51 MACRO ASSEMBLER  W3Q2                                                                 04/17/2023 14:59:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w3q2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w3q2.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+                       2     
+0000 7855              3     mov r0, #55h
+0002 7965              4             mov r1, #65h
+0004 7A05              5             mov r2, #05h
+0006 758174            6             mov sp, #74h 
+                       7             
+0009 7499              8     loop: mov a, #99h
+000B C3                9     clr c
+000C 96               10     subb a, @r0
+000D 04               11     inc a
+000E D4               12     da a 
+000F 27               13     add a , @r1
+0010 D4               14     da a 
+0011 5004             15     jnc neg
+0013 C0E0             16     push 0e0h
+0015 800B             17     sjmp next
+                      18     
+0017 F57F             19     neg:mov 7fh, a
+0019 7499             20     mov a , #99h
+001B C3               21     clr c
+001C 957F             22     subb a, 7fh
+001E 04               23     inc a
+001F D4               24     da a
+0020 C0E0             25     push 0e0h 
+                      26     
+0022                  27     next:
+0022 08               28     inc r0
+0023 09               29     inc r1
+0024 DAE3             30     djnz r2, loop
+                      31     end
+A51 MACRO ASSEMBLER  W3Q2                                                                 04/17/2023 14:59:27 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP . . . . . . .  C ADDR   0009H   A   
+NEG. . . . . . . .  C ADDR   0017H   A   
+NEXT . . . . . . .  C ADDR   0022H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

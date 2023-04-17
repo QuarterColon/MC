@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  W3Q4                                                                 04/17/2023 15:19:08 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN w3q4.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE w3q4.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 909050            2     mov dptr, #9050h
+0003 E0                3     movx a, @dptr
+0004 7A08              4     mov r2, #08h
+0006 7B00              5     mov r3, #00h
+0008 A2D0              6     mov c, psw.0
+000A 5012              7     jnc skip
+000C C2D5              8     clr psw.5
+000E C4                9     swap a
+000F 909052           10     mov dptr,#9052h
+0012 F0               11     movx @dptr,a
+0013                  12     loop:
+0013 33               13     rlc a
+0014 5001             14     jnc here
+0016 0B               15     inc r3
+0017                  16     here:
+0017 DAFA             17     djnz r2,loop
+0019 EB               18     mov a,r3
+001A 909051           19     mov dptr, #9051h
+001D F0               20     movx @dptr, a
+001E                  21     skip:
+                      22     end
+A51 MACRO ASSEMBLER  W3Q4                                                                 04/17/2023 15:19:08 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0017H   A   
+LOOP . . . . . . .  C ADDR   0013H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+SKIP . . . . . . .  C ADDR   001EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
